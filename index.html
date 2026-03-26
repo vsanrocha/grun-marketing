@@ -343,6 +343,12 @@
       padding: 100px 0;
     }
 
+    .demos-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
     .demos-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -573,10 +579,10 @@
 
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-top: 48px;
-      align-items: start;
+      align-items: stretch;
     }
 
     .price-card {
@@ -586,6 +592,12 @@
       padding: 40px 32px;
       position: relative;
       transition: all .4s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .plan-features {
+      flex: 1;
     }
 
     .price-card:hover {
@@ -1038,11 +1050,14 @@ c2 452 -1 750 -8 840 -33 413 -159 727 -359 892 -124 102 -291 169 -476 192
   <!-- ANIMATED SVG DEMOS -->
   <section class="demos" id="servicos">
     <div class="container">
-      <div class="badge"><span class="dot"></span> O que entregamos</div>
-      <h2 class="section-title reveal">Tudo que seu negócio<br>precisa para <span
-          style="color:var(--grun)">decolar</span></h2>
-      <p class="section-sub reveal">Agentes de IA especializados trabalham em conjunto para entregar um pacote completo
-        de marketing — como uma agência inteira, só que mais rápido.</p>
+      <div class="demos-header">
+        <div class="badge"><span class="dot"></span> O que entregamos</div>
+        <h2 class="section-title reveal">Tudo que seu negócio<br>precisa para <span
+            style="color:var(--grun)">decolar</span></h2>
+        <p class="section-sub reveal">Agentes de IA especializados trabalham em conjunto para entregar um pacote
+          completo
+          de marketing — como uma agência inteira, só que mais rápido.</p>
+      </div>
 
       <div class="demos-grid">
         <!-- Card 1: Logo -->
