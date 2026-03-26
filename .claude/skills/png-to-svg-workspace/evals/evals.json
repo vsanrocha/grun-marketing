@@ -1,0 +1,53 @@
+{
+  "skill_name": "png-to-svg",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Vectorize this logo and save as SVG: /home/viniciusrocha/projetos-pessoais/grun-marketing/landing-page/assets/image-Photoroom.png — it's a brand logo on transparent background, needs to be scalable for the website",
+      "expected_output": "A valid SVG file with the green logo paths, correct fill color (#00B540 or similar green), transparent background, no PIL dependency used",
+      "files": ["/home/viniciusrocha/projetos-pessoais/grun-marketing/landing-page/assets/image-Photoroom.png"],
+      "assertions": [
+        {
+          "name": "SVG file was created",
+          "check": "Output SVG file exists and is not empty"
+        },
+        {
+          "name": "SVG contains path elements",
+          "check": "File contains at least one <path> element — means potrace actually traced something"
+        },
+        {
+          "name": "Fill color is not black",
+          "check": "fill attribute is NOT #000000 — means color sampling step ran and replaced the default potrace color"
+        },
+        {
+          "name": "No PIL used",
+          "check": "No 'from PIL' or 'import PIL' in commands run — PIL is not installed in this environment"
+        },
+        {
+          "name": "Temp PBM cleaned up",
+          "check": "No leftover .pbm file in output directory"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "I need to convert this PNG to a vector file for print: /home/viniciusrocha/projetos-pessoais/grun-marketing/landing-page/assets/image-Photoroom.png — save the result in the same folder as grun-logo-v2.svg",
+      "expected_output": "SVG saved to the correct path, fill color sampled correctly without using PIL, at least 1 path element in the SVG",
+      "files": ["/home/viniciusrocha/projetos-pessoais/grun-marketing/landing-page/assets/image-Photoroom.png"],
+      "assertions": [
+        {
+          "name": "SVG saved to correct folder",
+          "check": "File exists at landing-page/assets/grun-logo-v2.svg"
+        },
+        {
+          "name": "SVG contains path elements",
+          "check": "File contains at least one <path> element"
+        },
+        {
+          "name": "Fill color is green",
+          "check": "Fill color hex starts with '00B' or '09C' or similar — close to the original #00B540"
+        }
+      ]
+    }
+  ]
+}
